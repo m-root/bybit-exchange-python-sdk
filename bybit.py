@@ -90,24 +90,24 @@ class Bybit():
         '''Order Creation Support'''
         return self.signed_request('POST', 'private/order/create', **params)
 
-    def buy(self, symbol, qty, price, amount):
+    def buy(self, symbol, price, amount):
         '''Market Buying of a coin'''
-        return self.create_order(symbol=symbol, side='Buy', type='Market', qty=str(qty), price=str(price),
+        return self.create_order(symbol=symbol, side='Buy', type='Market', qty=str(amount), price=str(price),
                                  time_in_force="GoodTillCancel", order_link_id=self.order_link_id(stringLength=6))
 
     def sell(self, symbol, price, amount):
         '''Market Selling of a coin'''
-        return self.create_order(symbol=symbol, side='Sell', type='Market', qty='qty', price=str(price),
+        return self.create_order(symbol=symbol, side='Sell', type='Market', qty=str(amount), price=str(price),
                                  time_in_force="GoodTillCancel", order_link_id=self.order_link_id(stringLength=6))
 
-    def buyLimit(self, symbol, qty, price, amount):
+    def buyLimit(self, symbol, price, amount):
         '''Limit Buying of a coin'''
-        return self.create_order(symbol=symbol, side='Buy', type='Limit', qty=str(qty), price=str(price),
+        return self.create_order(symbol=symbol, side='Buy', type='Limit', qty=str(amount), price=str(price),
                                  time_in_force="GoodTillCancel", order_link_id=self.order_link_id(stringLength=6))
 
     def sellLimit(self, symbol, price, amount):
         '''Limit Buying of a coin'''
-        return self.create_order(symbol=symbol, side='Sell', type='Limit', qty='qty', price=str(price),
+        return self.create_order(symbol=symbol, side='Sell', type='Limit', qty=str(amount), price=str(price),
                                  time_in_force="GoodTillCancel", order_link_id=self.order_link_id(stringLength=6))
 
     def cancel_order(self, order_id):
