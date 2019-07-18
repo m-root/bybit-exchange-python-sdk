@@ -1,9 +1,7 @@
+
 # bybit-exchange-python-sdk
-This is an unofficial Bybit Exchange API python implementation for automated trading https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html
+This is an unofficial Bybit Exchange API python implementation for automated trading. Find the documentation [here](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
 
-
-
-I
 
 Features
 --------
@@ -18,16 +16,16 @@ Features
 Quick Start
 -----------
 
-`Register an account with Bybit <https://www.bybit.com/app/register?ref=00xv5>`_.
+To register an account with Bybit [Click here](https://www.bybit.com/app/register?ref=00xv5)
 
-`Generate an API Key <https://www.bybit.com/app/user/api-management>`_ and assign relevant permissions.
+To Generate an API Key  and assign relevant permissions [Click here](https://www.bybit.com/app/user/api-management) 
 
-.. code:: bash
+**Terminal Installation**
 
     pip install bybit
 
 
-.. code:: python
+**Python**
 
     from bybit import Bybit
     client = Client(api_key, api_secret)
@@ -71,10 +69,12 @@ Quick Start
     # Cancelling an order
     auth = Bybit().auth(key, secret)
     prices = cancel_order(order_id)
-
     
 
 
 
 
-For more `check out the documentation <https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html>`_.
+For more check out the documentation 
+
+    https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html
+
