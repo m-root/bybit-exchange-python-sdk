@@ -10,7 +10,10 @@ def test_connection():
     bt.auth(KEY, SECRET)
     return bt
 
-bt = test_connection()
-
 def test_get_symbols(bt):
     assert bt.get_symbols().status == 200
+
+
+if __name__ == "__main__":
+    
+    bt = test_connection()

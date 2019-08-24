@@ -1,7 +1,8 @@
 
-# bybit-exchange-python-sdk
-This is an unofficial Bybit Exchange API python implementation for automated trading. Find the documentation [here](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
+bybit-exchange-python-sdk
+=========================
 
+This is an unofficial Bybit Exchange API python implementation for automated trading. [API Documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
 
 Features
 --------
@@ -12,7 +13,6 @@ Features
 - Response exception handling
 - Historical Kline/Candle fetching function
 
-
 Quick Start
 -----------
 
@@ -20,61 +20,41 @@ To register an account with Bybit [Click here](https://www.bybit.com/app/registe
 
 To Generate an API Key  and assign relevant permissions [Click here](https://www.bybit.com/app/user/api-management) 
 
-**Terminal Installation**
+Installation
+------------
+`$ pip install .`
 
-    pip install bybit
+or for development purposes
 
+`$ python setup.py develop`
 
-**Python**
+KEY Env Variables
+-----------------
+```
+$ vi key_example.sh             # add your api key from bybit in the parenthesis
+$ mv key_example.sh key.sh 
+$ bash key.sh                   # if this doesnt work, copy paste the two lines to your terminal
+```
 
-    from bybit import Bybit
-    client = Client(api_key, api_secret)
+```python
+import os
+from bybit import Bybit
 
-    # get exchange symbols
-    depth = Bybit().get_symbols()
+KEY = os.environ['BTKEY']
+SECRET = os.environ['BTSECRET']
 
-    
-    # get all symbol prices
-    prices = Bybit().get_klines('BTCUSD', '15', '1563367231')
+bt = Bybit()
+bt.(api_key, api_secret)
 
-    
-    # Create Market Buy Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+# get exchange symbols
+depth = bt.get_symbols()
 
-    
+# get all symbol prices
+prices = bt.get_klines('BTCUSD', '15', '1563367231')
 
-    
-    # Create Market Sell Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+# Create Market Buy Orders
+prices = bt.buy('BTCUSD', 9550, 1.000)
+```
 
-    
-
-    
-    # Create Market Buy Limit Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
-
-    
-
-    
-    # Create Market Sell Limit Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
-
-    
-
-    
-    # Cancelling an order
-    auth = Bybit().auth(key, secret)
-    prices = cancel_order(order_id)
-    
-
-
-
-
-For more check out the documentation 
-
-    https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html
+check out the [documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html)!
 

@@ -20,7 +20,7 @@ class Bybit():
         lettersAndDigits = string.ascii_letters + string.digits
         return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))
 
-    def public_request(self, method, api_url, params):
+    def public_request(self, method, api_url, params=''):
         '''Public Requests'''
         r_url = self.base_url + api_url
         try:
@@ -37,10 +37,8 @@ class Bybit():
         signature = base64.b64encode(hmac.new(self.secret, sig_str, digestmod=hashlib.sha1).digest())
         return signature
 
-    def signed_request(self, method, api_url, params):
+    def signed_request(self, method, api_url, params=''):
         '''Handler for a signed requests'''
-
-        param = ''
         if params:
             sort_pay = sorted(params.items())
             # sort_pay.sort()
