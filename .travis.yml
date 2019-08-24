@@ -1,7 +1,12 @@
-- os: windows
-  language: sh
-  python: "3.7"
-  before_install:
-        - choco install python3
-        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-        - python -m pip install --upgrade pip wheel
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.7"
+# command to install dependencies
+script: pytest test_bybit.py
+branches:
+  only:
+    - master
