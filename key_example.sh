@@ -1,0 +1,2 @@
+export BTKEY=""
+export BTSECRET=""
