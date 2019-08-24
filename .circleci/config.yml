@@ -5,4 +5,4 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
-      - run: pip install . -U
+      - run: pip install --user .
