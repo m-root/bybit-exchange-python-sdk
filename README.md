@@ -1,6 +1,8 @@
 bybit-exchange-python-sdk
 =========================
 
+[![CircleCI](https://circleci.com/gh/rgalbo/bybit-exchange-python-sdk.svg?style=svg)](https://circleci.com/gh/rgalbo/bybit-exchange-python-sdk)
+
 This is an unofficial Bybit Exchange API python implementation for automated trading. [API Documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
 
 Features
