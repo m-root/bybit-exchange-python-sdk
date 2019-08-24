@@ -8,6 +8,7 @@ SECRET = os.environ['BTSECRET']
 bt = Bybit()
 bt.auth(KEY, SECRET)
 
-
+@pytest.mark.parametrize("bt",[(bt)])
 def test_get_symbols(bt):
-    assert bt.get_symbols().status == 200
+    assert len(bt.get_symbols()) > 0
+    
