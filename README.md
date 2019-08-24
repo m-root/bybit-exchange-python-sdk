@@ -1,4 +1,3 @@
-
 bybit-exchange-python-sdk
 =========================
 
@@ -35,6 +34,9 @@ $ vi key_example.sh             # add your api key from bybit in the parenthesis
 $ mv key_example.sh key.sh 
 $ bash key.sh                   # if this doesnt work, copy paste the two lines to your terminal
 ```
+
+API Usage Examples
+------------------
 
 ```python
 import os
