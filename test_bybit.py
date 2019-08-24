@@ -14,4 +14,9 @@ def test_get_symbols(bt):
     
 @pytest.mark.parametrize("bt",[(bt)])
 def test_get_klines(bt):
-    print bt.get_klines('BTCUSD', in)
+    klines = bt.get_klines('BTCUSD', '15', '1563367231')
+    print(klines)
+    print(f'len klines: {len(klines)}')
+
+if __name__ == "__main__":
+    test_get_klines(bt)
