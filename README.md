@@ -85,7 +85,7 @@ depth = bt.get_symbols()
 prices = bt.get_klines('BTCUSD', '15', '1563367231')
 
 # Create Market Buy Orders
-prices = bt.buy('BTCUSD', 9550, 1.000)
+orders = bt.buy('BTCUSD', 9550, 1.000)
 ```
 
 check out the [documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html)!

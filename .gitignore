@@ -1,7 +1,7 @@
 key.sh
 __pycache__
 .vscode
-bybit.egg-info
+*.egg-info
 .pytest_cache
 .ipynb_checkpoints
 key.sh
