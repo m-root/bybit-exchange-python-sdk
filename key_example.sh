@@ -1,2 +1,0 @@
-export BTKEY=""
-export BTSECRET=""

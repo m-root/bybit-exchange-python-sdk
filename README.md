@@ -25,16 +25,44 @@ Installation
 ------------
 `$ pip install .`
 
-or for development purposes
+or for my purposes:
 
-`$ python setup.py develop`
+```
+pyenv local 3.7.4
+mkvirtualenv futures
+workon futures
+pip install -r requirements.txt
+cd bybit
+python -m pip install -e .
+cd ..
+jupyter lab
+```
 
 KEY Env Variables
 -----------------
 ```
 $ vi key_example.sh             # add your api key from bybit in the parenthesis
 $ cp key_example.sh key.sh 
-$ bash key.sh                   # if this doesnt work, copy paste the two lines to your terminal
+$ source key.sh                   # if this doesnt work, copy paste the two lines to your terminal
+```
+
+alternatively, in the disgust of all other failure you are likely to ask to just please god fucking hell make jupyter environments stop and run(see [jvp](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)):
+
+for ipython:
+
+```ipython
+# follows conveintion %set_env var val:
+%set_env BTKEY '[your_key_here]'
+%set_env BTSECRET '[your_secret_here]'
+```
+
+for last resort, (key.py):
+
+```python
+import sys,os,os.path
+sys.path.append(os.path.expanduser('~/code/eol_hsrl_python'))
+os.environ['HSRL_INSTRUMENT']='gvhsrl'
+os.environ['HSRL_CONFIG']=os.path.expanduser('~/hsrl_config')
 ```
 
 API Usage Examples

@@ -6,7 +6,7 @@ from distutils.errors import DistutilsExecError
 class keyadd(sdist_orig):
     def run(self):
         try:
-            self.spawn(['bash', 'key.sh'])
+            self.spawn(['source', 'key.sh'])
         except:
             self.warn('adding key env variables failed')
         super().run()
