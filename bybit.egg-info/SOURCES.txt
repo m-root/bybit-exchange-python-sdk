@@ -1,6 +1,0 @@
-README.md
-setup.py
-bybit.egg-info/PKG-INFO
-bybit.egg-info/SOURCES.txt
-bybit.egg-info/dependency_links.txt
-bybit.egg-info/top_level.txt
