@@ -1,7 +1,9 @@
+bybit-exchange-python-sdk
+=========================
 
-# bybit-exchange-python-sdk
-This is an unofficial Bybit Exchange API python implementation for automated trading. Find the documentation [here](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
+[![CircleCI](https://circleci.com/gh/rgalbo/bybit-exchange-python-sdk.svg?style=svg)](https://circleci.com/gh/rgalbo/bybit-exchange-python-sdk)
 
+This is an unofficial Bybit Exchange API python implementation for automated trading. [API Documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html).
 
 Features
 --------
@@ -12,7 +14,6 @@ Features
 - Response exception handling
 - Historical Kline/Candle fetching function
 
-
 Quick Start
 -----------
 
@@ -20,61 +21,72 @@ To register an account with Bybit [Click here](https://www.bybit.com/app/registe
 
 To Generate an API Key  and assign relevant permissions [Click here](https://www.bybit.com/app/user/api-management) 
 
-**Terminal Installation**
+Installation
+------------
+`$ pip install .`
 
-    pip install bybit
+or for my purposes:
 
+```
+pyenv local 3.7.4
+mkvirtualenv futures
+workon futures
+pip install -r requirements.txt
+cd bybit
+python -m pip install -e .
+cd ..
+jupyter lab
+```
 
-**Python**
+KEY Env Variables
+-----------------
+```
+$ vi key_example.sh             # add your api key from bybit in the parenthesis
+$ cp key_example.sh key.sh 
+$ source key.sh                   # if this doesnt work, copy paste the two lines to your terminal
+```
 
-    from bybit import Bybit
-    client = Client(api_key, api_secret)
+alternatively, in the disgust of all other failure you are likely to ask to just please god fucking hell make jupyter environments stop and run(see [jvp](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/)):
 
-    # get exchange symbols
-    depth = Bybit().get_symbols()
+for ipython:
 
-    
-    # get all symbol prices
-    prices = Bybit().get_klines('BTCUSD', '15', '1563367231')
+```ipython
+# follows conveintion %set_env var val:
+%set_env BTKEY '[your_key_here]'
+%set_env BTSECRET '[your_secret_here]'
+```
 
-    
-    # Create Market Buy Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+for last resort, (key.py):
 
-    
+```python
+import sys,os,os.path
+sys.path.append(os.path.expanduser('~/code/eol_hsrl_python'))
+os.environ['HSRL_INSTRUMENT']='gvhsrl'
+os.environ['HSRL_CONFIG']=os.path.expanduser('~/hsrl_config')
+```
 
-    
-    # Create Market Sell Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+API Usage Examples
+------------------
 
-    
+```python
+import os
+from bybit import Bybit
 
-    
-    # Create Market Buy Limit Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+KEY = os.environ['BTKEY']
+SECRET = os.environ['BTSECRET']
 
-    
+bt = Bybit()
+bt.(api_key, api_secret)
 
-    
-    # Create Market Sell Limit Orders
-    auth = Bybit().auth(key, secret)
-    prices = buy('BTCUSD', 9550, 1.000)
+# get exchange symbols
+depth = bt.get_symbols()
 
-    
+# get all symbol prices
+prices = bt.get_klines('BTCUSD', '15', '1563367231')
 
-    
-    # Cancelling an order
-    auth = Bybit().auth(key, secret)
-    prices = cancel_order(order_id)
-    
+# Create Market Buy Orders
+orders = bt.buy('BTCUSD', 9550, 1.000)
+```
 
-
-
-
-For more check out the documentation 
-
-    https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html
+check out the [documentation](https://bybit-exchange.github.io/bybit-official-api-docs/en/index.html)!
 
