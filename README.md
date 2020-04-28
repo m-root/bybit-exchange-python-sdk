@@ -20,10 +20,6 @@ To register an account with Bybit [Click here](https://www.bybit.com/app/registe
 
 To Generate an API Key  and assign relevant permissions [Click here](https://www.bybit.com/app/user/api-management) 
 
-**Terminal Installation**
-
-    pip install bybit
-
 
 **Python**
 
