@@ -16,12 +16,12 @@ logging.basicConfig(filename=f"{os.getcwd()}/rest_api.log",
 
 
 class Account:
-    def __init__(self, api_key, secret_key, leverage=None, url="https://api-testnet.bybit.com"):
-        """Use https://api.bybit.com if you do not want to use the Testnet"""
+    def __init__(self, api_key, secret_key, leverage=None):
+        """Use https://api.bybit.com if you do not want to use the Testnet https://api-testnet.bybit.com"""
         self.api_key = api_key
         self.secret = secret_key
         self.leverage = leverage
-        self.url = url
+        self.url = "https://api.bybit.com"
 
         logging.info(
             f'Bybit session initiated : API Key : {self.api_key}, Leverage : {self.leverage}, URL : {self.url}')
@@ -93,13 +93,40 @@ class Account:
         logging.info(r.text)
         return json.loads(r.text)
 
+    def trading_stop(self, symbol, side, take_profit, stop_loss,trailing_stop,new_trailing_active):
+        timestamp = int(time.time() * 1000)
+        param_str = f"api_key={self.api_key}&symbol={symbol}&timestamp={timestamp}"
+        sign = self.get_signature(param_str)
+        data = {
+
+            '''
+            
+            take_profit 
+            stop_loss 
+            trailing_stop 
+            new_trailing_active
+            '''
+            "api_key": self.api_key,
+            "timestamp": timestamp,
+            "symbol": symbol,
+            "take_profit": take_profit,
+            "stop_loss": stop_loss,
+            "trailing_stop": trailing_stop,
+            "new_trailing_active": new_trailing_active,
+            "sign": sign
+        }
+        logging.info('market_close')
+        r = requests.post(self.url + '/open-api/position/trading-stop', data)
+        logging.info(r.text)
+        return json.loads(r.text)
+
     def get_active_order(self, symbol):
         timestamp = int(time.time() * 1000)
-        param_str = f"api_key={self.api_key}&leverage={self.leverage}&symbol={symbol}&timestamp={timestamp}"
+        param_str = f"api_key={self.api_key}&symbol={symbol}&timestamp={timestamp}"
         sign = self.get_signature(param_str)
         data = {
             "api_key": self.api_key,
-            "leverage": self.leverage,
+
             "symbol": symbol,
             "timestamp": timestamp,
             "sign": sign
@@ -165,13 +192,28 @@ class Account:
         sign = self.get_signature(param_str)
         data = {
             "api_key": self.api_key,
-            "leverage": self.leverage,
             "symbol": symbol ,
             "timestamp": timestamp,
             "sign": sign
         }
         logging.info("ticker")
         r = requests.get(self.url + '/v2/public/tickers', data)
+        logging.info(r.text)
+        return json.loads(r.text)
+
+
+    def wallet_balance(self,coin):
+        timestamp = int(time.time() * 1000)
+        param_str = f"api_key={self.api_key}&coin={coin}&timestamp={timestamp}"
+        sign = self.get_signature(param_str)
+        data = {
+            "api_key": self.api_key,
+            "coin": coin,
+            "timestamp": timestamp,
+            "sign": sign
+        }
+        logging.info("ticker")
+        r = requests.get(self.url + '/v2/private/wallet/balance', data)
         logging.info(r.text)
         return json.loads(r.text)
 
