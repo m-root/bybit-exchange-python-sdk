@@ -1,4 +1,3 @@
-# longandshort.io
 # Implementation of https://github.com/bybit-exchange/bybit-official-api-docs/blob/master/en/README.md
 import requests
 import os
@@ -26,7 +25,7 @@ class Account:
         logging.info(
             f'Bybit session initiated : API Key : {self.api_key}, Leverage : {self.leverage}, URL : {self.url}')
 
-    def get_signature(self, param_str):
+    def get_signature(self, param_str) -> str:
         return str(hmac.new(bytes(self.secret, "utf-8"), bytes(param_str, "utf-8"), digestmod="sha256").hexdigest())
 
     def auth(self, symbol):
